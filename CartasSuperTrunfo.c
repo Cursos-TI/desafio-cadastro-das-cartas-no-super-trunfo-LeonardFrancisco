@@ -66,7 +66,7 @@ int main() {
                         
             // PIB
             printf("PIB: ");
-            scanf("%f", &cidades[posicao].pib);
+            scanf("%.2f", &cidades[posicao].pib);
             
             // Número de pontos turísticos
             printf("Número de pontos turísticos: ");
