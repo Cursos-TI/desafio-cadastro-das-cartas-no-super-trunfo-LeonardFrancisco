@@ -25,6 +25,10 @@ typedef struct {
     float area;
     // PIB da cidade em bilhões
     float pib;
+    // Densidade Populacional
+    float densidade;
+    // PIB per capita
+    float pib_percapita;
     // Número de pontos turísticos
     int pontos_turisticos;
 } Cidade;
@@ -50,7 +54,7 @@ int main() {
             //Código da cidade no formato "A01", "B02", etc.
             sprintf(cidades[posicao].codigo, "%c%02d", estados[i], j + 1);
             
-            printf("\n=== Cadastro da cidade: %s ===\n", cidades[posicao].codigo);
+            printf("\n=== Cadastro da Carta: %s ===\n", cidades[posicao].codigo);
             
             //Nome da cidade
             printf("Nome da cidade: ");
@@ -66,11 +70,17 @@ int main() {
                         
             // PIB
             printf("PIB: ");
-            scanf("%.2f", &cidades[posicao].pib);
+            scanf("%f", &cidades[posicao].pib);
             
             // Número de pontos turísticos
             printf("Número de pontos turísticos: ");
             scanf("%d", &cidades[posicao].pontos_turisticos);
+
+            // Densidade Populacional (população total / area)
+            cidades[posicao].densidade = cidades[posicao].populacao / cidades[posicao].area;
+
+            // PIB per Capita ( PIB / População Total)
+            cidades[posicao].pib_percapita = cidades[posicao].pib / cidades[posicao].populacao;
             
             // Avançar a posição do array
             posicao++;
@@ -95,10 +105,16 @@ int main() {
         printf("Área: %.2f km²\n", cidades[i].area);
 
         // Exibir o pib
-        printf("PIB: %f\n", cidades[i].pib);
+        printf("PIB: %.2f bilhões de reais\n", cidades[i].pib);
 
         // Exibir o númerode pontos turísticos
         printf("Número de pontos turísticos: %d\n", cidades[i].pontos_turisticos);
+
+        // Exibir a Densidade Populacional
+        printf("Densidade Populacional: %f hab/km²\n", cidades[i].densidade);
+
+        // Exibir o PIB per Capita
+        printf("PIB per Capita: %.6f bilhões/hab\n", cidades[i].densidade);
 
         printf("\n");
         
